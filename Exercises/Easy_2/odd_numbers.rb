@@ -1,7 +1,8 @@
-value = (1...99).select do |number| 
-  if number.odd? 
-    puts number
-  end 
+value = 1
+loop do 
+  puts value
+  break if value > 100
+  value += 2 
 end 
 
-puts value
+  

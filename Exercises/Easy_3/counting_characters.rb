@@ -1,6 +1,5 @@
-puts "Please write word or multiple words: "
-input = gets.chomp
+puts "Please write word or mutiple words: "
+answer = gets.chomp
+characters = answer.delete(' ').size
 
-characters = input.delete(' ').size
-
-puts "There are #{characters} characters in \"#{input}\"."
+puts "There are #{characters} characters in '#{answer}'."

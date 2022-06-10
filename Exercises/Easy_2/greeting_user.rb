@@ -1,11 +1,9 @@
-puts '=> What is your name?'
-name = gets.chomp 
-  
-if name[-1] == '!'
+print "What is you name? "
+name = gets.chomp
+
+if name.include?('!')
   name = name.chop
-  puts "=> HELLO #{name.upcase}. WHY ARE YOU SCREAMING?"
+  puts "HELLO #{name.upcase}. WHY ARE WE SCREAMING?"
 else 
-  puts "Hello #{name}"
-end
-
-
+  puts "Hello #{name}."
+end 
