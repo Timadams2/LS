@@ -1,15 +1,19 @@
+# method that takes a positive integer
+# displays a right triangle made upof stars
+
+# display the argument - 1 spaces with 1 star 
+# then subtract the spaces by 1 and the stars plus 1
+# iterate throguh it until stars = the input argument
+
 def triangle(num)
-  spaces = num - 1 
-  stars = 1 
+  stars = 1
+  spaces = num - 1
   
-  loop do  
-    print ' ' * spaces
+  num.times do
+    puts (" " * spaces) + ('*' * stars)
     spaces -= 1
-    puts '*' * stars
     stars += 1
-    break if stars == num
-  end 
+  end
 end 
 
-puts triangle(9)
-    
+p triangle(5)

@@ -1,12 +1,24 @@
-def print_in_box(message)
-  horizontal_rule = "+#{'-' * (message.size + 2)}+"
-  empty_line = "|#{' ' * (message.size + 2)}|"
-  puts horizontal_rule
-  puts empty_line
-  puts "| #{message} |"
-  puts empty_line
-  puts horizontal_rule
-end 
+# method that takes a string 
+# returns that string in a box 
+# box has + on the corners
+# | on the sides
+# - on top
+# and a spacee on every side of the string
 
-puts print_in_box('To boldly go where no one has gone before.')
- 
+# output + with - sstring size times plus two and then another +
+  # do this on the bottom too
+# output | and then spaces string size times plus 2 and then another |
+  # do this on the fourth line as well
+# output | then the string centered between the string size times plus 2
+
+def bannerizer(string)
+  puts '+' + ("-" * (string.size + 2)) + '+'
+  puts '|' + (' ' * (string.size + 2)) + '|'
+  puts '|' + string.center(string.size + 2) + '|'
+  puts '|' + (' ' * (string.size + 2)) + '|'
+  puts '+' + ("-" * (string.size + 2)) + '+'
+end
+
+bannerizer('To boldly go where no one has gone before.')
+bannerizer('Go Pats')
+

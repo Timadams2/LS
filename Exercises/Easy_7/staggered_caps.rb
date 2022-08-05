@@ -1,27 +1,33 @@
-# method that takes a string as an arg
-# returns new string that contains original with staggered capitilizations 
-# other characters count as a charcter when doing every other but dont change
-# go from string to array to string again 
+# method that takes a string as ana argument 
+# return a new string that contains the original value 
+# using a staggered capitalization 
+# non letter characters count when determining every other
+  # but dont change
+
+# algorithm 
+  # startin with a count of 0
+  # if the current character is a letter
+    # if the counter is an even then upcase
+    # if the counter is odd then downcase
+    # then add one to the counter
+  # if its not, don't add the counter
 
 def staggered_case(string)
-  staggered_sentence = []
-  index = 0 
-  
-  string.chars.each do |char|
-    if char.to_i.to_s == char
-      staggered_sentence << char
-    else 
-      if index.even?
-        staggered_sentence << char.upcase
-      elsif index.odd?
-        staggered_sentence << char.downcase
+  characters = string.chars
+  counter = 0
+  characters.map do |char|
+    if ('a'..'z').include?(char.downcase)
+      if counter.even?
+        char.upcase!
+      else
+        char.downcase!
       end
-      index += 1
+      counter += 1
     end
-  end 
-  staggered_sentence.join
+  end
+  p characters.join
 end
 
-puts staggered_case('I Love Launch School!') == 'I LoVe lAuNcH ScHoOl!'
-puts staggered_case('ALL_CAPS') == 'AlL_CaPs'
-puts staggered_case('ignore 77 the 444 numbers')
+p staggered_case('I Love Launch School!') == 'I lOvE lAuNcH sChOoL!'
+p staggered_case('ALL CAPS') == 'AlL cApS'
+p staggered_case('ignore 77 the 444 numbers') == 'IgNoRe 77 ThE 444 nUmBeRs'

@@ -1,15 +1,25 @@
-# method takes a grcery list array with quantaties 
-# converts into an array of the correct number of each fruit 
+# method that takes array of arrays 
+# each array has a item and a quantity
+# return and array of the items each inputted there quanity times
+
+# intiliaze empty array 
+# then iterate through the outter array
+# for each iteration add the first index, second index times
+# then return it
+
+
 
 def buy_fruit(list)
-  list_redone = []
+  result = []
   
   list.each do |item|
-    fruit, quantity = item[0], item[1]
-    quantity.times { list_redone << fruit }
-  end
-  list_redone
+    item[1].times do
+      result << item[0]
+    end 
+  end 
+  result
 end
 
-puts buy_fruit([["apples", 3], ["orange", 1], ["bananas", 2]]) ==
-  ["apples", "apples", "apples", "orange", "bananas","bananas"]
+
+
+p buy_fruit([["apples", 3], ["orange", 1], ["bananas", 2]]) == ["apples", "apples", "apples", "orange", "bananas","bananas"]

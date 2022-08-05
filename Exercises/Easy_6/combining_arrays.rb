@@ -1,15 +1,8 @@
-def merge(arr1, arr2)
-  new = []
-  arr1.each do |element|
-    next if arr2.include?(element)
-    new << element
-  end 
-  
-  new << arr2
-  new.to_a.flatten
-end 
-  
-puts merge([1, 3, 5], [3, 6, 9]) == [1, 3, 5, 6, 9]
-merge([1, 3, 5], [3, 6, 9])
+# method that takes two array as arguments 
+# returns an array that can contain all of the values without duplicates
 
-# should have used ' Array#| '
+def merge(arr1, arr2)
+  arr1.concat(arr2).uniq
+end
+
+p merge([1, 3, 5], [3, 6, 9]) == [1, 3, 5, 6, 9]

@@ -1,19 +1,31 @@
-# create your own to_i method given a string of numbers
-# create a hash that shows each integer for its string version 
-# add first integer to the last num as first digit, then keep adding them one after the other
+# convert a string to a number
+# cant use premade methods
+# always numeric characters
+# never empty 
 
-DIGITS = {
-  '0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4,
-  '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9
-}
+# iterate thorugh the characters backwards
+# change the character to its number
+  # creat a hash to has its corresponding char and number
+  # key is string and value is number
+# add it to the number
+  # initiliaze a number to add each result to on each iteration
+# multiply each number to that when it is is added, its in the right digits spot
+  # start with 1 and then multiply it by 10 on each iteration
+# return that number
+
 
 def string_to_integer(string)
-  digits = string.chars.map { |char| DIGITS[char] }
+  hsh = {'0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9}
+  result = 0
+  digits_place = 1
   
-  value = 0
-  digits.each { |digit| value = 10 * value + digit }
-  value
+  string.chars.reverse.each do |char|
+    result += hsh[char] * digits_place
+    digits_place *= 10
+  end
+  result
 end
 
-puts string_to_integer('4321') == 4321
-puts string_to_integer('570') == 570
+p string_to_integer('4321')
+p string_to_integer('4321') == 4321
+p string_to_integer('23')

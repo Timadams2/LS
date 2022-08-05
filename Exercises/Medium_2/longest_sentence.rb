@@ -1,16 +1,44 @@
-# method that takes a files
-# print the longest sentnce and how many words are in it 
-# sentences end with either ! ? . 
+# method that reads the content of a text file 
+# prints the longest sentence\
+# sentences end with '.', '!' or '?'
+# anything other than those or spaces should be treated as words
+# return the sentence
 
-def longest_word(text)
-  sentences = text.split(/\.|\?|!/)
-  sentences_by_length = sentences.sort_by { |sentence| sentence.split.size }
-  longest_sentence = sentences_by_length.pop
-  puts longest_sentence
-  puts longest_sentence.split.size
+# algorithm:
+  # split the paragraph into an array of sentences
+    # use split 
+      # split at '.'
+      # then iterate through those and split at '!'
+      # then flatten
+      # then split at '?'
+      # the flatten 
+  # find out the length without the spaces 
+    # find the max length without spaces 
+  # return the longest one 
+    # return it with the spaces
+    
+def longest_sentence(paragraph)
+  sentences = paragraph.split('!')
+  again = sentences.map do |sent|
+    sent.split('?')
+  end
+  result = again.flatten.map do |another|
+    another.split('.')
+  end
+  longest = ''
+  longest_length = 0
+  result.flatten.each do |string|
+    if string.delete(' ').length > longest_length
+      longest_length = string.delete(' ').length
+      longest = string
+    end
+  end
+  p longest_length
+  puts longest
 end
 
-file = "Four score and seven years ago our fathers brought forth
+
+text = 'Four score and seven years ago our fathers brought forth
 on this continent a new nation, conceived in liberty, and
 dedicated to the proposition that all men are created
 equal.
@@ -40,6 +68,7 @@ resolve that these dead shall not have died in vain
 -- that this nation, under God, shall have a new birth
 of freedom -- and that government of the people, by
 the people, for the people, shall not perish from the
-earth."
+earth.'
 
-longest_word(file)
+
+longest_sentence(text)

@@ -1,11 +1,20 @@
-# Write a method that returns the next to last word in the String passed to it as an argument.
-# Words are any sequence of non-blank characters.
-# You may assume that the input String will always contain at least two words.
+# method that returns the next to last word in the string 
+# words are any sequence of non blank characters
+# the input string will always contain at least two words
+# find the middle word
+# it must have an odd amount of words
+# it must have at least 3 words unless 1 means that the middle
+# split into words the input string
 
 def penultimate(string)
-  phrase = string.split 
-  phrase[-2]
-end 
+  words = string.split
+  if words.size.odd?
+    return words[words.size / 2]
+  else
+    return words[(words.size / 2) - 1].flatten
+  end
+end
 
-puts penultimate('last word') == 'last'
-puts penultimate('Launch School is great!') == 'is'
+p penultimate('last word') == 'last'
+p penultimate('Launch School is great!')
+p penultimate('1 2 3')

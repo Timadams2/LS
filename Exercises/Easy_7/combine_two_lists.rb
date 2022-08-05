@@ -3,13 +3,11 @@
 # You may assume that both input Arrays are non-empty, and that they have the same number of elements
 
 def interleave(arr1, arr2)
-  combined_arrays = []
-  loop do
-    combined_arrays << arr1.shift
-    combined_arrays << arr2.shift 
-    break if arr2.empty?
+  new_arr = []
+  arr1.size.times do |num|
+    new_arr << arr1[num]
+    new_arr << arr2[num]
   end
-  combined_arrays
+  new_arr
 end 
-
-puts interleave([1, 2, 3], ['a', 'b', 'c']) == [1, 'a', 2, 'b', 3, 'c']
+p interleave([1, 2, 3], ['a', 'b', 'c']) == [1, 'a', 2, 'b', 3, 'c']

@@ -1,19 +1,13 @@
-# take the elements from one array, put them in another array and then reverse that array and then put them bak in the original array
-
+# method that takes an array as an argument 
+# reverses the elements in it
+# cant use the reverse method 
 
 def my_reverse(array)
-  array_copy = []
-  puts "Beginning object id #{array.object_id}"
-  
-  loop do
-    array_copy << array.pop
-    break if array.empty?
-  end 
-  
-  array << array_copy
-  
-  puts "End object id #{array.object_id}"
-  array
-end 
+  new_arr = []
+  array.each do 
+    new_arr << array[index]
+  end
+  new_arr
+end
 
-puts my_reverse([1, 2, 3, 4, 5])
+p my_reverse([1, 2, 3, 4])

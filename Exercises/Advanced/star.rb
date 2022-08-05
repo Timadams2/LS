@@ -1,32 +1,37 @@
-def star(num)
-  upper_section(num)
-  middle_row(num)
-  bottom_section(num)
-end
-
-def bottom_section(num)
-  max = ((num - 1) / 2 ) - 1
+# method that displays an 8 pointed star 
+# made up of 4 lines of n stars 
+# n is an odd integer
+# one going up one down and two diagonal through the middle to make 8 points
+# it will fit in an n by n grid
+  # 3 stars on each line other than the middle
+  # middle star is always in the same place 
   
-  0.upto(max) do |space|
-    spaces = ' ' * space 
-    puts "*#{spaces}*#{spaces}*".center(num)
-  end
+# algortihm
+  # output three stars each line
+    # output two stars on the side and one in the middle
+      # output a star
+        # then output a star centered by the argument num minus 2
+        # each time subtract 2 from what it should be centered by
+      # then output another star on the end 
+      # center all of this each time to the argument number
+    # the ones on the outside move one star closer until touching 
     
-end
+  # once you get to the middle print num amount of the stars in a line
+    # print * num
+    
+  # then reverse what happened above
 
-def upper_section(num)
-  max = ((num - 1) / 2 ) - 1
-  
-  max.downto(0) do |space|
-    spaces = ' ' * space 
-    puts "*#{spaces}*#{spaces}*".center(num)
+def star(num)
+  middle = num - 2
+  (num / 2).times do 
+    puts ('*' + ('*').center(middle) + '*').center(num)
+    middle -= 2
   end
-  
-end
-
-def middle_row(num)
   puts '*' * num
+  (num / 2).times do
+    middle += 2
+    puts ('*' + ('*').center(middle) + '*').center(num)
+  end
 end
 
-star(9)
-star(17)
+star(51)

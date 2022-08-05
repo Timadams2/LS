@@ -1,24 +1,29 @@
-# Write a method that takes an Array of numbers and 
-# then returns the sum of the sums of each leading subsequence for that Array. 
-# You may assume that the Array always contains at least one number.
+# method that takes an array of number
+# return the sum of the sums of each of the leading substrings
+# if one number, return that
 
-## add index 0 with index 0 + 1 and then 0 + 1 + 2 etc
-## add to seperate array 
-## return seperate array 
+# input: array
+# output: integer
+# DS: array
 
-def sum_of_sums(numbers)
-  total = 0
-  sum = 0
+# algorithm:
+  # find what each substring combined is
+  # initliaze result variable and set to 0
+  # iterate through 0..array. size and then have that number be th e second index
+    # then have 0 always be the first index
+    # take the sum each iteration and add it to the result
+  # return result
+
+def sum_of_sums(arr)
+  result = 0
   
-  numbers.each do |number|
-    sum += number 
-    total += sum
-  end 
-  
-  total
-end 
+  0.upto(arr.size - 1) do |idx2|
+    result += arr[0..idx2].reduce(:+)
+  end
+  result
+end
 
-puts sum_of_sums([3, 5, 2]) == (3) + (3 + 5) + (3 + 5 + 2) # -> (21)
-puts sum_of_sums([1, 5, 7, 3]) == (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) # -> (36)
-puts sum_of_sums([4]) == 4
-puts sum_of_sums([1, 2, 3, 4, 5]) == 35
+p sum_of_sums([3, 5, 2]) == (3) + (3 + 5) + (3 + 5 + 2) # -> (21)
+p sum_of_sums([1, 5, 7, 3]) == (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) # -> (36)
+p sum_of_sums([4]) == 4
+p sum_of_sums([1, 2, 3, 4, 5]) == 35

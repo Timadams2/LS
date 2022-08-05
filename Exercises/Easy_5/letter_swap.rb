@@ -1,13 +1,17 @@
+# given a string of words seperated by spaced
+# returns a string in which the first and last letter of every word swapped
+
+# split the sentence into words
+# for each word switch the first and last
+
 def swap(string)
-  new = string.split(' ')
-  new.each do |str|
-    str[0], str[-1] = str[-1], str[0]
+  words = string.split
+  words.map do |word|
+    word[0], word[-1] = word[-1], word[0]
   end 
-  new.join(' ')
+  p words.join(' ')
 end 
 
-puts swap('Oh what a wonderful day it is') == 'hO thaw a londerfuw yad ti si'
-puts swap('Abcde fygui')
-puts swap('a') == 'a'  
-    
-  
+p swap('Oh what a wonderful day it is') == 'hO thaw a londerfuw yad ti si'
+p swap('Abcde') == 'ebcdA'
+p swap('a') == 'a'

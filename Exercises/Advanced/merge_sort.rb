@@ -1,83 +1,56 @@
-# P
-# Explicit:
-# # sort an array of passed in values using merge sort 
-# # this array will only contain on data type at a time (string or integer)
-# # recursive sorthing algorith that breaks fown array elements into nested sub_arrays
-# # then recombines them in sorted order
-# # can use merge method created prior
-# Implicit:
-## can be odd or even amount of elements 
-## you should continue to next arrays until there are one element arrays inside 
-## can you mutate?
+# sort array with out using sort
+# recursive algorithm 
+# breaks down the array into nested arrays 
+# then merges them together and sort them as that happens
+   # use the perge method previousl created
+# can take strings as well 
+# can take any amount of elemenets 
+# always at least 2
 
-# E
-## [9, 5, 7, 1] ->
-## [[9, 5], [7, 1]] ->
-## [[[9], [5]], [[7], [1]]]
-### work your way back out
-## [[[9], [5]], [[7], [1]]] ->
-## [[5, 9], [1, 7]] ->
-## [1, 5, 7, 9]merge_sort([9, 5, 7, 1]) == [1, 5, 7, 9]
+# input: array
+# output: array
 
-## merge_sort([5, 3]) == [3, 5]
-## merge_sort([6, 2, 7, 1, 4]) == [1, 2, 4, 6, 7]
-## merge_sort(%w(Sue Pete Alice Tyler Rachel Kim Bonnie)) == %w(Alice Bonnie Kim Pete Rachel Sue Tyler)
-## merge_sort([7, 3, 9, 15, 23, 1, 6, 51, 22, 37, 54, 43, 5, 25, 35, 18, 46]) == [1, 3, 5, 6, 7, 9, 15, 18, 22, 23, 25, 35, 37, 43, 46, 51, 54]
+# algorithm:
+  # split the array into two array
+    # call split on half the size
+    # then iterate through those array and if they have more than one element, split it 
+      # split  it, then you have 2
+      # iterae throug, if it is more than two, split it again
+      # if split was called again, iterate through those,
+        # if not, then work with that array for next step
+    # split those int array if possible 
+    
+  # then call merge on each array
+    # iterate through the first index to the last
+    # call merge on the index plus the next index as the arguments
+    # keep doing that each time until it one array
+    
+  # return that
 
-# D
-## input: array
-## midput: nested arrays
-## output: arra
-
-def merge_sort(array)
-  return array if array.size == 1
-  
-  sub_array_1 = array[0...array.size / 2]
-  sub_array_2 = array[array.size / 2...array.size]
-  
-  sub_array_2 = merge_sort(sub_array_1)
-  sub_array_2 = merge_sort(sub_array_2)
-  
-  merge(sub_array_1, sub_array_2)
-end
-
-def merge(arr1, arr2)
-  merged_array = []
-  index1 = 0
-  index2 = 0
-  
-  if arr1.empty?
-    merged_array.push(arr2)
-  elsif arr2.empty?
-    merged_array.push(arr1)
-  else
-    loop do
-      if index1 == arr1.size
-        merged_array.push(arr2[index2..-1][0])
-        break
-      elsif index2 == arr2.size
-        merged_array.push(arr1[index1..-1][0])
-        break
-      else
-        if arr1[index1] == arr2[index2]
-          merged_array.push(arr1[index1], arr2[index2])
-          index1 += 1
-          index2 += 1
-        elsif arr1[index1] >= arr2[index2]
-          merged_array.push(arr2[index2])
-          index2 += 1
-        else
-          merged_array.push(arr1[index1])
-          index1 += 1
-        end
-      end
+def merge_sort(arr)
+  nested_array = split_half(arr)
+  fully_nested = nested_array.map do |array|
+    if array.size > 1
+      split_half(array)
     end
   end
-  merged_array.flatten
+  p fully_nested
+end
+ 
+def split_half(array)
+  half = array.size / 2
+  first = array[0...half]
+  second = array[half..-1]
+  if first.size == 1 && second.size == 1
+    return [first, second]
+  else 
+    split_half(first)
+    split_half(second)
+  end
 end
 
 p merge_sort([9, 5, 7, 1]) == [1, 5, 7, 9]
 p merge_sort([5, 3]) == [3, 5]
 p merge_sort([6, 2, 7, 1, 4]) == [1, 2, 4, 6, 7]
 p merge_sort(%w(Sue Pete Alice Tyler Rachel Kim Bonnie)) == %w(Alice Bonnie Kim Pete Rachel Sue Tyler)
-p merge_sort([7, 3, 9, 15, 23, 1, 6, 51, 22, 37, 54, 43, 5, 25, 35, 18, 46]) == [1, 3, 5, 6, 7, 9, 15, 18, 22, 23, 25, 35, 37, 43, 46, 51, 54]
+# p merge_sort([7, 3, 9, 15, 23, 1, 6, 51, 22, 37, 54, 43, 5, 25, 35, 18, 46]) == [1, 3, 5, 6, 7, 9, 15, 18, 22, 23, 25, 35, 37, 43, 46, 51, 

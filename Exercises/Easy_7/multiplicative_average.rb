@@ -1,19 +1,28 @@
-# Write a method that takes an Array of integers as input, 
-# multiplies all the numbers together, divides the result by the number of entries in the Array, 
-# and then prints the result rounded to 3 decimal places.
-# Assume the array is non-empty.
+# method that takes an array of integers
+# mulitplies all the numbers together
+# divides that by the number of entries in the array
+# outputs the result rounded to the 3 decimal places 
+# non empty
+# one integer means just take thatnumber and make it have 3 decimals
 
-def show_multiplicative_average(integer_array)
-  integers_multiplied = 1.to_f
+# initialize the product and assign it to 1
+# multiply all the numbers 
+  # iterate through the number and multiply by the product
+# take the sum / the size of the array
+# outputwiht 3 decimals
+  # float with 3 as an argument 
   
-  integer_array.map do |integer|
-    integers_multiplied *= integer
+def show_multiplicative_average(array)
+  product = 1.0
+  
+  array.each do |num|
+    product *= num
   end 
   
- average = (integers_multiplied / (integer_array.count)).round(3)
- puts "The multiplicative average of #{integer_array} is #{average}"
+  (product / array.size).round(3)
 end 
 
-show_multiplicative_average([3, 5])                # => The result is 7.500
-show_multiplicative_average([6])                   # => The result is 6.000
-show_multiplicative_average([2, 5, 7, 11, 13, 17]) # => The result is 28361.667
+p show_multiplicative_average([3, 5])                # => The result is 7.500
+p show_multiplicative_average([6])                   # => The result is 6.000
+p show_multiplicative_average([2, 5, 7, 11, 13, 17]) # => The result is 28361.667
+

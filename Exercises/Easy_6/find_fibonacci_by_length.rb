@@ -1,26 +1,35 @@
-# method has a number of digits as its argument
-# returns the index of the first fibonacci number of the digits specified
+# method that calculates and returns the index of the first fiboncacci number that had the nubber of digits specified
+# takes an integer as an argument 
+# return an integer
+  # represents the index of the fib number
+# can be any length
 
-def find_fibonacci_index_by_length(digits)
-  first = 1
-  second = 1
-  index = 2
-  
-  loop do 
-    index += 1
-    fibonacci = first + second
-    break if fibonacci.to_s.size >= digits
+# algorithm
+  # iterate through every fibonacci number
+    # initialize a variable and set it to 1
+    # initialize an array and add the number 1 and 1
+    # add the last two digits in the array and add it to the end 
+    # store that number in 
+  # if the size of the number has the same amount of digits asspecified
+     # on each iteration, convert it to a string and find the length
+     # if the length is equivalent to the input stop on that number
+  # return the index of the number
+    # call last on the array
     
-    first = second
-    second = fibonacci
-  end 
+def find_fibonacci_index_by_length(digits)
+  fib_numbers = [1, 1]
   
-  index
+  loop do
+    fib_numbers << fib_numbers[-2] + fib_numbers[-1]
+    break if fib_numbers.last.to_s.length == digits
+  end
+  
+  fib_numbers.index(fib_numbers.last) + 1
 end
 
-puts find_fibonacci_index_by_length(2)       # 1 1 2 3 5 8 13
-puts find_fibonacci_index_by_length(3) == 12         # 1 1 2 3 5 8 13 21 34 55 89 144
-puts find_fibonacci_index_by_length(10) == 45
-puts find_fibonacci_index_by_length(100) == 476
-puts find_fibonacci_index_by_length(1000) == 4782
-puts find_fibonacci_index_by_length(10000) == 47847
+p find_fibonacci_index_by_length(2)       # 1 1 2 3 5 8 13
+p find_fibonacci_index_by_length(3) == 12         # 1 1 2 3 5 8 13 21 34 55 89 144
+p find_fibonacci_index_by_length(10) == 45
+p find_fibonacci_index_by_length(100) == 476
+p find_fibonacci_index_by_length(1000)
+p find_fibonacci_index_by_length(10000) == 47847

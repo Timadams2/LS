@@ -1,24 +1,23 @@
-# Write a method that searches for all multiples of 3 or 5 that lie between 1 and some other number, 
-# and then computes the sum of those multiples. For instance, if the supplied number is 20, 
-# the result should be 98 (3 + 5 + 6 + 9 + 10 + 12 + 15 + 18 + 20).
-# You may assume that the number passed in is an integer greater than 1.
+# method that searches for all the multiples of 3 and 5
+# add themm all up and return that number
 
-def multiple_3_or_5(multiple)
-  multiple % 3 == 0 || multiple % 5 == 0
-end
+# iterate through every number from 1 to the integer
+# intitialize a sum variable 
+# if the number if divisible by 3 or 5, add it to the sum
 
-def multisum(input)
-  number = 1
-  answer = 0
-  loop do 
-    answer += number if multiple_3_or_5(number)
-    break if number == input
-    number += 1
+def multisum(integer)
+  sum = 0
+  
+  1.upto(integer) do |num|
+    if num % 3 == 0 || num % 5 == 0
+      sum += num 
+    end 
   end 
-  answer
+  
+  sum
 end 
-      
-puts multisum(3) == 3
-puts multisum(5) == 8
-puts multisum(10) == 33
-puts multisum(1000) == 234168
+
+p multisum(3) == 3
+p multisum(5) == 8
+p multisum(10) == 33
+p multisum(1000) == 234168
