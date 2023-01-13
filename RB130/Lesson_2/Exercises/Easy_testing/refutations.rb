@@ -1,0 +1,1 @@
+refute_equal(true, list.include?('xyz'))
